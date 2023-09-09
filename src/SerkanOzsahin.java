@@ -8,278 +8,168 @@ import org.testng.annotations.Test;
 
 public class SerkanOzsahin extends BaseDriver {
 
-    @Test
-    public void LoginPositive() { // Valid Username and Password
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("Admin");
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin123");
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement adminText = driver.findElement(By.cssSelector("div[class='col-12 col-sm-12 col-md-12 col-lg-12'] > h4"));
-
-        Assert.assertTrue(adminText.getText().contains("admin"));
-    }
-
-    @Test
-    public void LoginNegative1() { // Invalid Username and Password
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("Admin1");
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin1234");
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement errorMsg = driver.findElement(By.id("error-message"));
-
-        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test
-    public void LoginNegative2() { // Invalid Username
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("Admin1");
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin123");
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement errorMsg = driver.findElement(By.id("error-message"));
-
-        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test
-    public void LoginNegative3() { // Invalid Password
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("Admin");
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin1234");
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement errorMsg = driver.findElement(By.id("error-message"));
-
-        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test
-    public void LoginNull1() { // Null Username and Password
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement errorMsg = driver.findElement(By.id("error-message"));
-
-        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test
-    public void LoginNull2() { // Null Username
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin123");
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement errorMsg = driver.findElement(By.id("error-message"));
-
-        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test
-    public void LoginNull3() { // Null Password
-
-        driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
-        MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("Admin");
-
-        WebElement pharmacyBtn = driver.findElement(By.id("Pharmacy"));
-        pharmacyBtn.click();
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
-        WebElement errorMsg = driver.findElement(By.id("error-message"));
-
-        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test
+    @Test(priority = 1)
     public void LocationNull() { // Location not selected
 
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
-
-        WebElement demoBtn = driver.findElement(By.linkText("Demo"));
-        demoBtn.click();
-
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
         wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        WebElement openMRS2 = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
-        openMRS2.click();
-
+        elements.openMRS2.click();
         MyFunc.Bekle(2);
-
-        WebElement openMRS2Demo = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
-        wait.until(ExpectedConditions.visibilityOf(openMRS2Demo));
-        openMRS2Demo.click();
-
+        elements.openMRS2Demo.click();
         wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("Admin");
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin123");
-
-        WebElement loginBtn = driver.findElement(By.id("loginButton"));
-        loginBtn.click();
-
+        elements.userName.sendKeys("Admin");
+        elements.password.sendKeys("Admin123");
+        elements.loginBtn.click();
         WebElement locationError = driver.findElement(By.id("sessionLocationError"));
-
+        wait.until(ExpectedConditions.visibilityOf(locationError));
         Assert.assertTrue(locationError.getText().contains("location"));
+    }
+
+    @Test(priority = 2)
+    public void LoginPositive() { // Valid Username and Password
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.userName.sendKeys("Admin");
+        elements.password.sendKeys("Admin123");
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement adminText = driver.findElement(By.cssSelector("div[class='col-12 col-sm-12 col-md-12 col-lg-12'] > h4"));
+        wait.until(ExpectedConditions.visibilityOf(adminText));
+        Assert.assertTrue(adminText.getText().contains("admin"));
+        WebElement logoutBtn = driver.findElement(By.linkText("Logout"));
+        logoutBtn.click();
+    }
+
+    @Test(priority = 3)
+    public void LoginNegative1() { // Invalid Username and Password
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.userName.sendKeys("Admin1");
+        elements.password.sendKeys("Admin1234");
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("error-message"));
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
+    }
+
+    @Test(priority = 4)
+    public void LoginNegative2() { // Invalid Username
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.userName.sendKeys("Admin1");
+        elements.password.sendKeys("Admin123");
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("error-message"));
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
+    }
+
+    @Test(priority = 5)
+    public void LoginNegative3() { // Invalid Password
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.userName.sendKeys("Admin");
+        elements.password.sendKeys("Admin1234");
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("error-message"));
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
+    }
+
+    @Test(priority = 6)
+    public void LoginNull1() { // Null Username and Password
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("error-message"));
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
+    }
+
+    @Test(priority = 7)
+    public void LoginNull2() { // Null Username
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.password.sendKeys("Admin123");
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("error-message"));
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
+    }
+
+    @Test(priority = 8)
+    public void LoginNull3() { // Null Password
+
+        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
+        driver.get("https://openmrs.org/");
+        MyFunc.Bekle(1);
+        elements.demoBtn.click();
+        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
+        elements.openMRS2.click();
+        MyFunc.Bekle(2);
+        elements.openMRS2Demo.click();
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        elements.userName.sendKeys("Admin");
+        elements.pharmacyBtn.click();
+        elements.loginBtn.click();
+        WebElement errorMsg = driver.findElement(By.id("error-message"));
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        Assert.assertTrue(errorMsg.getText().contains("Invalid"));
     }
 }
