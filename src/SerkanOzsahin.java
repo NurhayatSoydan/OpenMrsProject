@@ -14,8 +14,8 @@ public class SerkanOzsahin extends BaseDriver {
     String validPassword = "Admin123";
     String invalidId = "Admin1";
     String invalidPassword = "Admin1234";
-    String patient1ID = "100NRM";
-    String patient2ID = "100NTK";
+    String patient1ID = "100NUH";
+    String patient2ID = "100NVF";
 
     @Test(priority = 1)
     public void locationNull() { // Location not selected
@@ -141,5 +141,9 @@ public class SerkanOzsahin extends BaseDriver {
         elements.firstPatient.click();
         elements.confirmBtn.click();
         wait.until(ExpectedConditions.urlContains("patientDashboard"));
+        WebElement firstPID = driver.findElement(By.xpath("//span[text()='" + patient1ID + "']"));
+        WebElement secondPID = driver.findElement(By.xpath("//span[text()='" + patient2ID + "']"));
+        Assert.assertTrue(firstPID.getText().equals(patient1ID));
+        Assert.assertTrue(secondPID.getText().equals(patient2ID));
     }
 }
