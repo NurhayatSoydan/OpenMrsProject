@@ -81,9 +81,10 @@ public class SerkanSengul extends BaseDriver {
 
 
     }
+
     @Test
-    public void Patient_Appointment_Wrong_Time_Zone(){
-        SerkanPOM hamza=new SerkanPOM();
+    public void Patient_Appointment_Wrong_Time_Zone() {
+        SerkanPOM hamza = new SerkanPOM();
 
         driver.get("https://openmrs.org/");
         wait.until(ExpectedConditions.elementToBeClickable(hamza.DemoButon));
@@ -106,7 +107,7 @@ public class SerkanSengul extends BaseDriver {
         hamza.Loginbuton.click();
         hamza.AppointmentScheduiling.click();
         hamza.ManageServiceTypes.click();
-        hamza.SearchBox.sendKeys("100M6V"+Keys.ENTER);
+        hamza.SearchBox.sendKeys("100M6V" + Keys.ENTER);
 
         System.out.println("hamza.Mesaage.getText() = " + hamza.Massege.getText());
         Assert.assertTrue(hamza.Massege.isEnabled());
@@ -114,8 +115,9 @@ public class SerkanSengul extends BaseDriver {
     }
 
     @Test
-    public void Patient_Appointment_Correct_Time_Zone(){
-        SerkanPOM hamza=new SerkanPOM();
+    public void Patient_Appointment_Correct_Time_Zone() {
+        SerkanPOM hamza = new SerkanPOM();
+        //Randevu almadan önce mutlaka saati GMT+0 yapmanız gerekmektedir.
 
         driver.get("https://openmrs.org/");
         wait.until(ExpectedConditions.elementToBeClickable(hamza.DemoButon));
@@ -138,13 +140,82 @@ public class SerkanSengul extends BaseDriver {
         hamza.Loginbuton.click();
         hamza.AppointmentScheduiling.click();
         hamza.ManageServiceTypes.click();
-        hamza.SearchBox.sendKeys("100M6V"+Keys.ENTER);
+        hamza.SearchBox.sendKeys("100M6V" + Keys.ENTER);
 
         System.out.println("hamza.Mesaage.getText() = " + hamza.Massege.getText());
         Assert.assertFalse(hamza.Massege.isDisplayed());
     }
 
+    @Test
+    public void Searching_the_Patient_List() {
+        SerkanPOM hamza = new SerkanPOM();
+        driver.get("https://openmrs.org/");
+        wait.until(ExpectedConditions.elementToBeClickable(hamza.DemoButon));
+        hamza.DiscoButon.click();
+
+        Set<String> windowsIDler = driver.getWindowHandles();
+        Iterator gosterge = windowsIDler.iterator();
+        String secondSekme = gosterge.next().toString();
+
+        driver.switchTo().window(secondSekme);
+        driver.get("https://openmrs.org/product/");
+
+        hamza.DemoButon.click();
+        hamza.UserName.sendKeys("admin");
+        hamza.Password.sendKeys("Admin123");
+
+        int randomSecim = MyFunc.randomGenerator(hamza.Locations.size());
+        hamza.LocationButton.get(randomSecim).click();
+
+        hamza.Loginbuton.click();
+        hamza.FindPatRec.click();
+        hamza.SearchBox.sendKeys("100JK4");
+        wait.until(ExpectedConditions.visibilityOf(hamza.ClickPatient));
+        hamza.ClickPatient.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(hamza.GeneralActions));
+        for (WebElement Siddik : hamza.GeneralActions) {
+            System.out.println("Siddik.getText() = " + Siddik.getText());
+            Assert.assertTrue(Siddik.isEnabled());
+        }
+
+    }
+
+    @Test
+    public void Searching_With_WrongName() {
+        SerkanPOM hamza = new SerkanPOM();
+        driver.get("https://openmrs.org/");
+        wait.until(ExpectedConditions.elementToBeClickable(hamza.DemoButon));
+        hamza.DiscoButon.click();
+
+        Set<String> windowsIDler = driver.getWindowHandles();
+        Iterator gosterge = windowsIDler.iterator();
+        String secondSekme = gosterge.next().toString();
+
+        driver.switchTo().window(secondSekme);
+        driver.get("https://openmrs.org/product/");
+
+        hamza.DemoButon.click();
+        hamza.UserName.sendKeys("admin");
+        hamza.Password.sendKeys("Admin123");
+
+        int randomSecim = MyFunc.randomGenerator(hamza.Locations.size());
+        hamza.LocationButton.get(randomSecim).click();
+
+        hamza.Loginbuton.click();;
+
+        hamza.FindPatRec.click();
+        hamza.SearchBox.sendKeys("100JK421");
+        wait.until(ExpectedConditions.visibilityOf(hamza.WrongSearch));
+        Assert.assertTrue(hamza.WrongSearch.isEnabled());
+        System.out.println("test.WrongSearch.getText() = " + hamza.WrongSearch.getText());
+    }
+
+
+
 
 }
+
+
+
 
 

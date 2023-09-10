@@ -106,5 +106,42 @@ public class SerkanPOM {
     @FindBy(css ="[id='time-zone-warning']")
     public WebElement Massege;
 
+    @FindBy(css = "[class='icon-search']")
+    public WebElement FindPatRec;
+
+    @FindBy(css = "[class='odd']")
+    public WebElement ClickPatient;
+
+    @FindBy(css = "[class='float-left'] > li")
+    public List<WebElement> GeneralActions;
+
+    @FindBy(xpath = "//*[text()='No matching records found']")
+    public WebElement WrongSearch;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
