@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class SerkanOzsahin extends BaseDriver {
@@ -56,8 +57,8 @@ public class SerkanOzsahin extends BaseDriver {
         logoutBtn.click();
     }
 
-    @Test(priority = 3)
-    public void LoginNegative1() { // Invalid ID and Password
+    @Test(dataProvider = "userInvalid", priority = 3)
+    public void LoginNegative1(String Id, String password) { // Invalid ID and Password, Invalid ID, Invalid Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
@@ -68,16 +69,23 @@ public class SerkanOzsahin extends BaseDriver {
         MyFunc.Bekle(2);
         elements.openMRS2Demo.click();
         wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        elements.userName.sendKeys(invalidId);
-        elements.password.sendKeys(invalidPassword);
+        elements.userName.sendKeys(Id);
+        elements.password.sendKeys(password);
         elements.pharmacyBtn.click();
         elements.loginBtn.click();
         wait.until(ExpectedConditions.visibilityOf(elements.errorMsg));
         Assert.assertTrue(elements.errorMsg.getText().contains("Invalid"));
     }
 
-    @Test(priority = 4)
-    public void LoginNegative2() { // Invalid ID
+    @DataProvider
+    public Object[][] userInvalid() {
+
+        Object[][] invalidData = {{invalidId, invalidPassword}, {invalidId, validPassword}, {validId, invalidPassword}};
+        return invalidData;
+    }
+
+    @Test(dataProvider = "userNull", priority = 4)
+    public void LoginNull1(String Id, String password) { // Null ID and Password, Null ID, Null Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
@@ -88,87 +96,18 @@ public class SerkanOzsahin extends BaseDriver {
         MyFunc.Bekle(2);
         elements.openMRS2Demo.click();
         wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        elements.userName.sendKeys(invalidId);
-        elements.password.sendKeys(validPassword);
+        elements.userName.sendKeys(Id);
+        elements.password.sendKeys(password);
         elements.pharmacyBtn.click();
         elements.loginBtn.click();
         wait.until(ExpectedConditions.visibilityOf(elements.errorMsg));
         Assert.assertTrue(elements.errorMsg.getText().contains("Invalid"));
     }
 
-    @Test(priority = 5)
-    public void LoginNegative3() { // Invalid Password
+    @DataProvider
+    public Object[][] userNull() {
 
-        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
-        driver.get("https://openmrs.org/");
-        MyFunc.Bekle(1);
-        elements.demoBtn.click();
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        elements.openMRS2.click();
-        MyFunc.Bekle(2);
-        elements.openMRS2Demo.click();
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        elements.userName.sendKeys(validId);
-        elements.password.sendKeys(invalidPassword);
-        elements.pharmacyBtn.click();
-        elements.loginBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(elements.errorMsg));
-        Assert.assertTrue(elements.errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test(priority = 6)
-    public void LoginNull1() { // Null ID and Password
-
-        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
-        driver.get("https://openmrs.org/");
-        MyFunc.Bekle(1);
-        elements.demoBtn.click();
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        elements.openMRS2.click();
-        MyFunc.Bekle(2);
-        elements.openMRS2Demo.click();
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        elements.pharmacyBtn.click();
-        elements.loginBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(elements.errorMsg));
-        Assert.assertTrue(elements.errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test(priority = 7)
-    public void LoginNull2() { // Null ID
-
-        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
-        driver.get("https://openmrs.org/");
-        MyFunc.Bekle(1);
-        elements.demoBtn.click();
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        elements.openMRS2.click();
-        MyFunc.Bekle(2);
-        elements.openMRS2Demo.click();
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        elements.password.sendKeys(validPassword);
-        elements.pharmacyBtn.click();
-        elements.loginBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(elements.errorMsg));
-        Assert.assertTrue(elements.errorMsg.getText().contains("Invalid"));
-    }
-
-    @Test(priority = 8)
-    public void LoginNull3() { // Null Password
-
-        SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
-        driver.get("https://openmrs.org/");
-        MyFunc.Bekle(1);
-        elements.demoBtn.click();
-        wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
-        elements.openMRS2.click();
-        MyFunc.Bekle(2);
-        elements.openMRS2Demo.click();
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        elements.userName.sendKeys(validId);
-        elements.pharmacyBtn.click();
-        elements.loginBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(elements.errorMsg));
-        Assert.assertTrue(elements.errorMsg.getText().contains("Invalid"));
+        Object[][] nullData = {{"", ""}, {"", validPassword}, {validId, ""}};
+        return nullData;
     }
 }
