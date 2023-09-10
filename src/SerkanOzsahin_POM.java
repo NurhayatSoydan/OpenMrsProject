@@ -27,4 +27,7 @@ public class SerkanOzsahin_POM {
 
     @FindBy(id = "loginButton")
     public WebElement loginBtn;
+
+    @FindBy(id = "error-message")
+    public WebElement errorMsg;
 }
