@@ -15,7 +15,7 @@ public class SerkanOzsahin extends BaseDriver {
     String invalidPassword = "Admin1234";
 
     @Test(priority = 1)
-    public void LocationNull() { // Location not selected
+    public void locationNull() { // Location not selected
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
@@ -35,7 +35,7 @@ public class SerkanOzsahin extends BaseDriver {
     }
 
     @Test(priority = 2)
-    public void LoginPositive() { // Valid ID and Password
+    public void loginPositive() { // Valid ID and Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
@@ -58,7 +58,7 @@ public class SerkanOzsahin extends BaseDriver {
     }
 
     @Test(dataProvider = "userInvalid", priority = 3)
-    public void LoginNegative1(String Id, String password) { // Invalid ID and Password, Invalid ID, Invalid Password
+    public void loginNegative(String Id, String password) { // Invalid ID and Password, Invalid ID, Invalid Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
@@ -85,7 +85,7 @@ public class SerkanOzsahin extends BaseDriver {
     }
 
     @Test(dataProvider = "userNull", priority = 4)
-    public void LoginNull1(String Id, String password) { // Null ID and Password, Null ID, Null Password
+    public void loginNull(String Id, String password) { // Null ID and Password, Null ID, Null Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
         driver.get("https://openmrs.org/");
@@ -109,5 +109,23 @@ public class SerkanOzsahin extends BaseDriver {
 
         Object[][] nullData = {{"", ""}, {"", validPassword}, {validId, ""}};
         return nullData;
+    }
+
+    @Test
+    public void patientMerge() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
