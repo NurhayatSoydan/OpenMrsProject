@@ -1,4 +1,5 @@
 import Utility.BaseDriver;
+import Utility.BaseDriverParameter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -6,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 public class SerkanOzsahin_POM {
 
     public SerkanOzsahin_POM() {
-        PageFactory.initElements(BaseDriver.driver, this);
+        PageFactory.initElements(BaseDriverParameter.driver, this);
     }
 
     @FindBy(linkText = "Demo")
