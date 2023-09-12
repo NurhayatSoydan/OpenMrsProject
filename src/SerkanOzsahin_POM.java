@@ -9,7 +9,7 @@ public class SerkanOzsahin_POM {
         PageFactory.initElements(BaseDriver.driver, this);
     }
 
-    @FindBy(linkText = "Demo")
+    @FindBy(className = "zak-button")
     public WebElement demoBtn;
 
     @FindBy(xpath = "//span[text()='Explore OpenMRS 2']")

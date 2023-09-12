@@ -14,10 +14,10 @@ public class SerkanOzsahin extends BaseDriver {
     String validPassword = "Admin123";
     String invalidId = "Admin1";
     String invalidPassword = "Admin1234";
-    String patient1ID = "100NUH";
-    String patient2ID = "100NVF";
+    String patient1ID = "100J0C";
+    String patient2ID = "100HXG";
 
-    @Test(groups = {"Smoke Test"})
+    @Test(priority = 1)
     public void locationNull() { // Location not selected
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -37,7 +37,7 @@ public class SerkanOzsahin extends BaseDriver {
         Assert.assertTrue(locationError.getText().contains("location"));
     }
 
-    @Test(groups = {"Smoke Test"})
+    @Test(priority = 2)
     public void loginPositive() { // Valid ID and Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -60,7 +60,7 @@ public class SerkanOzsahin extends BaseDriver {
         logoutBtn.click();
     }
 
-    @Test(dataProvider = "userInvalid", groups = {"Smoke Test"})
+    @Test(dataProvider = "userInvalid", priority = 3)
     public void loginNegative(String Id, String password) { // Invalid ID and Password, Invalid ID, Invalid Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -87,7 +87,7 @@ public class SerkanOzsahin extends BaseDriver {
         return invalidData;
     }
 
-    @Test(dataProvider = "userNull", groups = {"Smoke Test"})
+    @Test(dataProvider = "userNull", priority = 4)
     public void loginNull(String Id, String password) { // Null ID and Password, Null ID, Null Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -114,7 +114,7 @@ public class SerkanOzsahin extends BaseDriver {
         return nullData;
     }
 
-    @Test(groups = {"Regression Test"})
+    @Test(priority = 5)
     public void patientMerge() {
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
