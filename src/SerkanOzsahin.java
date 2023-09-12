@@ -1,5 +1,4 @@
 import Utility.BaseDriver;
-import Utility.BaseDriverParameter;
 import Utility.MyFunc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,14 +8,14 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class SerkanOzsahin extends BaseDriverParameter {
+public class SerkanOzsahin extends BaseDriver {
 
     String validId = "Admin";
     String validPassword = "Admin123";
     String invalidId = "Admin1";
     String invalidPassword = "Admin1234";
-    String patient1ID = "100NUH";
-    String patient2ID = "100NVF";
+    String patient1ID = "100J0C";
+    String patient2ID = "100HXG";
 
     @Test(priority = 1)
     public void locationNull() { // Location not selected

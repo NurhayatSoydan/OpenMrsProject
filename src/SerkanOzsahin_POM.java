@@ -1,5 +1,4 @@
 import Utility.BaseDriver;
-import Utility.BaseDriverParameter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,10 +6,10 @@ import org.openqa.selenium.support.PageFactory;
 public class SerkanOzsahin_POM {
 
     public SerkanOzsahin_POM() {
-        PageFactory.initElements(BaseDriverParameter.driver, this);
+        PageFactory.initElements(BaseDriver.driver, this);
     }
 
-    @FindBy(linkText = "Demo")
+    @FindBy(className = "zak-button")
     public WebElement demoBtn;
 
     @FindBy(xpath = "//span[text()='Explore OpenMRS 2']")
