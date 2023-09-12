@@ -1,4 +1,4 @@
-import Utility.BaseDriverParameter;
+import Utility.BaseDriver;
 import Utility.MyFunc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class SerkanOzsahin extends BaseDriverParameter {
+public class SerkanOzsahin extends BaseDriver {
 
     String validId = "Admin";
     String validPassword = "Admin123";
@@ -17,7 +17,7 @@ public class SerkanOzsahin extends BaseDriverParameter {
     String patient1ID = "100NUH";
     String patient2ID = "100NVF";
 
-    @Test(groups = {"Smoke Test"})
+    @Test(priority = 1)
     public void locationNull() { // Location not selected
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -37,7 +37,7 @@ public class SerkanOzsahin extends BaseDriverParameter {
         Assert.assertTrue(locationError.getText().contains("location"));
     }
 
-    @Test(groups = {"Smoke Test"})
+    @Test(priority = 2)
     public void loginPositive() { // Valid ID and Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -60,7 +60,7 @@ public class SerkanOzsahin extends BaseDriverParameter {
         logoutBtn.click();
     }
 
-    @Test(dataProvider = "userInvalid", groups = {"Smoke Test"})
+    @Test(dataProvider = "userInvalid", priority = 3)
     public void loginNegative(String Id, String password) { // Invalid ID and Password, Invalid ID, Invalid Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -87,7 +87,7 @@ public class SerkanOzsahin extends BaseDriverParameter {
         return invalidData;
     }
 
-    @Test(dataProvider = "userNull", groups = {"Smoke Test"})
+    @Test(dataProvider = "userNull", priority = 4)
     public void loginNull(String Id, String password) { // Null ID and Password, Null ID, Null Password
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
@@ -114,7 +114,7 @@ public class SerkanOzsahin extends BaseDriverParameter {
         return nullData;
     }
 
-    @Test(groups = {"Regression Test"})
+    @Test(priority = 5)
     public void patientMerge() {
 
         SerkanOzsahin_POM elements = new SerkanOzsahin_POM();
