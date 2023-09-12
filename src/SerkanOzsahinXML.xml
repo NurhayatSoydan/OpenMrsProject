@@ -1,8 +1,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="mySuite">
+<suite name="mySuite" parallel="tests" thread-count="2">
 
     <test name="myTest1">
+
+        <parameter name="browserType" value=""></parameter>
+
+
+
+        <classes>
+            <class name="SerkanOzsahin"></class>
+        </classes>
+
+    </test>
+
+    <test name="myTest2">
+
+        <parameter name="browserType" value="edge"></parameter>
 
         <groups>
 
@@ -14,9 +28,7 @@
         </groups>
 
         <classes>
-
             <class name="SerkanOzsahin"></class>
-
         </classes>
 
     </test>

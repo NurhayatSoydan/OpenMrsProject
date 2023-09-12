@@ -1,4 +1,4 @@
-import Utility.BaseDriver;
+import Utility.BaseDriverParameter;
 import Utility.MyFunc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class SerkanOzsahin extends BaseDriver {
+public class SerkanOzsahin extends BaseDriverParameter {
 
     String validId = "Admin";
     String validPassword = "Admin123";
