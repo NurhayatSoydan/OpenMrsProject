@@ -11,11 +11,14 @@ public class SerkanPOM {
         PageFactory.initElements(BaseDriver.driver, this);
     }
 
-    @FindBy(xpath ="//span[text()='Discover Our Technology']")
-    public WebElement DiscoButon;
+    @FindBy(linkText = "Demo")
+    public WebElement DemoButton;
 
-    @FindBy(xpath ="(//*[@class='elementor-button-text'])[1]")
-    public WebElement DemoButon;
+    @FindBy(xpath = "//span[text()='Explore OpenMRS 2']")
+    public WebElement OpenMRS;
+
+    @FindBy(xpath = "//span[text()='Enter the OpenMRS 2 Demo']")
+    public WebElement OpenMrsDemo;
 
     @FindBy(id ="username")
     public WebElement UserName;
@@ -118,7 +121,8 @@ public class SerkanPOM {
     @FindBy(xpath = "//*[text()='No matching records found']")
     public WebElement WrongSearch;
 
-
+    @FindBy(id = "Pharmacy")
+    public WebElement PharmacyButton;
 
 
 
