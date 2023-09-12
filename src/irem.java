@@ -7,24 +7,26 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class irem extends BaseDriver {
-    String name="Admin";
-    String pAssword="Admin123";
+    String name = "Admin";
+    String pAssword = "Admin123";
+
     @Test
-    public void LogOut(){
-        iremPOM e=new iremPOM();
+    public void LogOut() {
+        iremPOM e = new iremPOM();
         driver.get("https://openmrs.org/demo/");
         wait.until(ExpectedConditions.elementToBeClickable(e.demo));
         e.demo.click();
         e.username.sendKeys(name);
-         e.password.sendKeys(pAssword);
+        e.password.sendKeys(pAssword);
         e.desk.click();
         e.in.click();
         e.out.click();
 
     }
+
     @Test
-    public void list(){
-        iremPOM e=new iremPOM();
+    public void list() {
+        iremPOM e = new iremPOM();
         driver.get("https://openmrs.org/demo/");
         wait.until(ExpectedConditions.elementToBeClickable(e.Demo));
         e.Demo.click();
@@ -33,8 +35,6 @@ public class irem extends BaseDriver {
         e.Desk.click();
         e.IN.click();
         e.findElement.click();
-
-
 
 
     }
