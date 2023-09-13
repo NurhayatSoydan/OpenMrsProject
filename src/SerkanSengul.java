@@ -1,17 +1,13 @@
 import Utility.BaseDriver;
 import Utility.MyFunc;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+
 
 public class SerkanSengul extends BaseDriver {
 
@@ -26,8 +22,8 @@ public class SerkanSengul extends BaseDriver {
         hamza.OpenMRS.click();
         MyFunc.Bekle(2);
         hamza.OpenMrsDemo.click();
-       wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-       hamza.UserName.sendKeys("admin");
+        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+        hamza.UserName.sendKeys("admin");
         hamza.Password.sendKeys("Admin123");
 
         int randomSecim = MyFunc.randomGenerator(hamza.Locations.size());
@@ -180,6 +176,7 @@ public class SerkanSengul extends BaseDriver {
 
 
 }
+
 
 
 
