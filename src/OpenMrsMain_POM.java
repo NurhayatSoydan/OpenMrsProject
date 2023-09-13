@@ -169,8 +169,11 @@ public class OpenMrsMain_POM {
 
     @FindBy(css ="[class='PersonName-givenName']")
     public WebElement ConfrimName;
-    @FindBy(css ="[class='float-sm-right']")
+    @FindBy(css ="[class='float-sm-right'] > span")
     public WebElement ConfrimID;
+
+    @FindBy(css ="[class='float-sm-right'] > span")
+    public WebElement ConfrimID2;
 
     @FindBy(xpath ="(//*[@class='icon-calendar'])[2]")
     public WebElement AppointmentScheduiling;
