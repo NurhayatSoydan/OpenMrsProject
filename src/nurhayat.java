@@ -33,26 +33,6 @@ public class nurhayat extends BaseDriver {
         WebElement lgnbutton = driver.findElement(By.id("loginButton"));
         lgnbutton.click();
 
-
-
-    }
-
-
-    @Test(dataProvider = "UserData")
-    public void userTest(String username, String password){
-             System.out.println("Geçersiz girişler listelendi: "+username+" "+password);
-    }
-    @DataProvider
-    public Object[][] UserData(){
-        Object[][] data={
-                {"null","123456"},
-                {"ayşe", "kanmaz"},
-                {"ökkeş","kederli"},
-                {"bahtsız","bahtlı"},
-                {"keder","456456"},
-                {"tonyy","478956"}
-        };
-        return data;
     }
 
 
