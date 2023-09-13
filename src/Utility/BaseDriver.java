@@ -21,9 +21,9 @@ public class BaseDriver {
         logger.setLevel(Level.SEVERE);
 
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+        //driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
