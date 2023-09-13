@@ -1,15 +1,90 @@
 import Utility.BaseDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class SerkanPOM {
-    public SerkanPOM() {
+public class OpenMrsMain_POM {
+
+    public OpenMrsMain_POM() {
         PageFactory.initElements(BaseDriver.driver, this);
     }
+    @FindBy(xpath = "//span[text()='Enter the OpenMRS 2 Demo']")
+    public WebElement demo;
+
+    @FindBy(css ="input[id='username']" )
+    public WebElement username;
+
+
+
+    @FindBy(css = "li[id='Registration Desk']")
+    public WebElement desk;
+
+    @FindBy(css ="input[id='loginButton']" )
+    public WebElement in;
+
+    @FindBy(css = "a[href='/openmrs/appui/header/logout.action?successUrl=openmrs']")
+    public WebElement out;
+
+    @FindBy(xpath = "//span[text()='Enter the OpenMRS 2 Demo']")
+    public WebElement Demo;
+
+    @FindBy(css ="input[id='username']" )
+    public WebElement Username;
+
+
+    @FindBy(css ="li[id='Registration Desk']" )
+    public WebElement Desk;
+
+    @FindBy(css ="input[id='loginButton']" )
+    public WebElement IN;
+
+    @FindBy(css ="i[class='icon-search']" )
+    public WebElement findElement;
+
+    @FindBy(className = "zak-button")
+    public WebElement demoBtn;
+
+    @FindBy(xpath = "//span[text()='Explore OpenMRS 2']")
+    public WebElement openMRS2;
+
+    @FindBy(xpath = "//span[text()='Enter the OpenMRS 2 Demo']")
+    public WebElement openMRS2Demo;
+
+    @FindBy(id = "username")
+    public WebElement userName;
+
+
+    @FindBy(id = "Pharmacy")
+    public WebElement pharmacyBtn;
+
+    @FindBy(id = "loginButton")
+    public WebElement loginBtn;
+
+    @FindBy(id = "error-message")
+    public WebElement errorMsg;
+
+    @FindBy(className = "icon-hdd")
+    public WebElement dataMBtn;
+
+    @FindBy(className = "icon-group")
+    public WebElement mergePBtn;
+
+    @FindBy(id = "patient1-text")
+    public WebElement patient1;
+
+    @FindBy(id = "patient2-text")
+    public WebElement patient2;
+
+    @FindBy(id = "confirm-button")
+    public WebElement confirmBtn;
+
+    @FindBy(css = "div[class='messages-container'] > h1")
+    public WebElement warningText;
+
+    @FindBy(id = "first-patient")
+    public WebElement firstPatient;
 
     @FindBy(linkText = "Demo")
     public WebElement DemoButton;
@@ -123,29 +198,5 @@ public class SerkanPOM {
 
     @FindBy(id = "Pharmacy")
     public WebElement PharmacyButton;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
