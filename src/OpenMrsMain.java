@@ -21,16 +21,16 @@ public class OpenMrsMain extends BaseDriver {
     String a=null;
     String b=null;
 
-    @Test(groups = "Smoke Test", priority = 2)
+    @Test(groups = "Smoke Test", priority = 3)
     public void LogOut() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         driver.get("https://openmrs.org/demo/");
         wait.until(ExpectedConditions.elementToBeClickable(e.demo));
         e.demo.click();
-     //   e.username.sendKeys(name);
-      //  e.Password.sendKeys(pAssword);
-        e.desk.click();
-        e.in.click();
+        //   e.username.sendKeys(name);
+        //  e.Password.sendKeys(pAssword);
+        //e.desk.click();
+        //e.in.click();
         e.out.click();
 
     }
@@ -41,10 +41,10 @@ public class OpenMrsMain extends BaseDriver {
         driver.get("https://openmrs.org/demo/");
         wait.until(ExpectedConditions.elementToBeClickable(e.Demo));
         e.Demo.click();
-        e.Username.sendKeys(name);
-        e.Password.sendKeys(pAssword);
-        e.Desk.click();
-        e.IN.click();
+//        e.Username.sendKeys(name);
+//        e.Password.sendKeys(pAssword);
+//        e.Desk.click();
+//       e.IN.click();
         e.findElement.click();
 
 
@@ -94,18 +94,18 @@ public class OpenMrsMain extends BaseDriver {
         WebElement demo3 = driver.findElement(By.xpath("(//*[@class='elementor-button-text'])[4]"));
         demo3.click();
         MyFunc.Bekle(2);
-
-        WebElement username = driver.findElement(By.id("username"));
-        username.sendKeys("Admin");
-
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("Admin123");
-
-        WebElement inpatientWard = driver.findElement(By.id("Inpatient Ward"));
-        inpatientWard.click();
-
-        WebElement lgnbutton = driver.findElement(By.id("loginButton"));
-        lgnbutton.click();
+//
+//        WebElement username = driver.findElement(By.id("username"));
+//        username.sendKeys("Admin");
+//
+//        WebElement password = driver.findElement(By.id("password"));
+//        password.sendKeys("Admin123");
+//
+//        WebElement inpatientWard = driver.findElement(By.id("Inpatient Ward"));
+//        inpatientWard.click();
+//
+//        WebElement lgnbutton = driver.findElement(By.id("loginButton"));
+//        lgnbutton.click();
         WebElement account = driver.findElement(By.cssSelector("[class='nav-item identifier']"));
 
         MyFunc.Bekle(2);
@@ -128,20 +128,20 @@ public class OpenMrsMain extends BaseDriver {
     String patient1ID = "100J0C";
     String patient2ID = "100HXG";
 
-    @Test(groups = "Smoke Test", priority = 3)
+    @Test(groups = "Smoke Test", priority = 1)
     public void locationNull() { // Location not selected
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         driver.get("https://openmrs.org/");
-        MyFunc.Bekle(1);
+        MyFunc.Bekle(3);
         e.demoBtn.click();
         wait.until(ExpectedConditions.urlToBe("https://openmrs.org/demo/"));
         e.openMRS2.click();
         MyFunc.Bekle(2);
         e.openMRS2Demo.click();
         wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        e.userName.sendKeys(validId);
-        e.Password.sendKeys(validPassword);
+        e.userName.sendKeys("hamza");
+        e.Password.sendKeys("123123213");
         e.loginBtn.click();
         WebElement locationError = driver.findElement(By.id("sessionLocationError"));
         wait.until(ExpectedConditions.visibilityOf(locationError));
@@ -225,7 +225,7 @@ public class OpenMrsMain extends BaseDriver {
         return nullData;
     }
 
-    @Test(groups = "Regression Test", priority =9 )
+    @Test(groups = "Regression Test", priority = 9)
     public void patientMerge() {
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
@@ -241,7 +241,8 @@ public class OpenMrsMain extends BaseDriver {
         e.Password.sendKeys(validPassword);
         e.pharmacyBtn.click();
         e.loginBtn.click();
-     */   e.dataMBtn.click();
+     */
+        e.dataMBtn.click();
         e.mergePBtn.click();
         e.patient1.sendKeys(a);
         e.patient2.sendKeys(b + Keys.ENTER);
@@ -256,7 +257,7 @@ public class OpenMrsMain extends BaseDriver {
     }
     //Serkan ŞENGÜL
 
-    @Test(groups = "Regression Test",priority = 7)
+    @Test(groups = "Regression Test", priority = 7)
     public void Patient_Registration() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
 
@@ -313,14 +314,14 @@ public class OpenMrsMain extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(e.ConfrimName));
         System.out.println("hamza.ConfrimName = " + e.ConfrimName.getText());
         System.out.println("hamza.ConfrimID = " + e.ConfrimID.getText());
-        a=e.ConfrimID.getText();
+        a = e.ConfrimID.getText();
         Assert.assertTrue(e.ConfrimName.isEnabled());
         Assert.assertTrue(e.ConfrimID.isEnabled());
 
 
     }
 
-    @Test(groups = "Regression Test",priority = 8)
+    @Test(groups = "Regression Test", priority = 8)
     public void Patient_Registration2() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
 
@@ -339,8 +340,9 @@ public class OpenMrsMain extends BaseDriver {
         e.LocationButton.get(randomSecim).click();
 
         e.Loginbuton.click();
-      */ wait.until(ExpectedConditions.visibilityOf(e.Register_Patient));
-       e.Register_Patient.click();
+      */
+        wait.until(ExpectedConditions.visibilityOf(e.Register_Patient));
+        e.Register_Patient.click();
         wait.until(ExpectedConditions.elementToBeClickable(e.GivenName));
         e.GivenName.sendKeys("TestSadık");
         e.MiddleName.sendKeys("TestGüven");
@@ -377,7 +379,7 @@ public class OpenMrsMain extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(e.ConfrimName));
         System.out.println("hamza.ConfrimName = " + e.ConfrimName.getText());
         System.out.println("hamza.ConfrimID = " + e.ConfrimID2.getText());
-        b=e.ConfrimID2.getText();
+        b = e.ConfrimID2.getText();
         Assert.assertTrue(e.ConfrimName.isEnabled());
         Assert.assertTrue(e.ConfrimID2.isEnabled());
 
@@ -402,7 +404,7 @@ public class OpenMrsMain extends BaseDriver {
 //        e.Loginbuton.click();
         e.AppointmentScheduiling.click();
         e.ManageServiceTypes.click();
-        e.SearchBox.sendKeys("100LMX" + Keys.ENTER);
+        e.SearchBox.sendKeys(a + Keys.ENTER);
 
         System.out.println("hamza.Mesaage.getText() = " + e.Massege.getText());
         Assert.assertTrue(e.Massege.isEnabled());
@@ -428,7 +430,7 @@ public class OpenMrsMain extends BaseDriver {
 //        e.Loginbuton.click();
         e.AppointmentScheduiling.click();
         e.ManageServiceTypes.click();
-        e.SearchBox.sendKeys("100LMX" + Keys.ENTER);
+        e.SearchBox.sendKeys(b + Keys.ENTER);
 
         System.out.println("hamza.Mesaage.getText() = " + e.Massege.getText());
         Assert.assertFalse(e.Massege.isDisplayed());
@@ -485,77 +487,76 @@ public class OpenMrsMain extends BaseDriver {
 
     //Salih MUTLUER
     @Test(groups = "Smoke Test", priority = 15)
-    public void HastaSilme(){
+    public void HastaSilme() {
         driver.get("https://openmrs.org/");
         MyFunc.Bekle(2);
-        WebElement demo= driver.findElement(By.className("zak-button"));
+        WebElement demo = driver.findElement(By.className("zak-button"));
         demo.click();
-        WebElement buton=driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
+        WebElement buton = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
         wait.until(ExpectedConditions.visibilityOf(buton));
         buton.click();
         MyFunc.Bekle(3);
-        WebElement demo2=driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
+        WebElement demo2 = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
         demo2.click();
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement user=driver.findElement(By.id("username"));
-        user.sendKeys("Admin");
-        WebElement pass=driver.findElement(By.id("password"));
-        pass.sendKeys("Admin123");
-
-        WebElement isolation= driver.findElement(By.cssSelector("[id='sessionLocation'] :nth-child(2)"));
-        isolation.click();
-        WebElement login= driver.findElement(By.id("loginButton"));
-        login.click();
+//        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+//        WebElement user=driver.findElement(By.id("username"));
+//        user.sendKeys("Admin");
+//        WebElement pass=driver.findElement(By.id("password"));
+//        pass.sendKeys("Admin123");
+//
+//        WebElement isolation= driver.findElement(By.cssSelector("[id='sessionLocation'] :nth-child(2)"));
+//        isolation.click();
+//        WebElement login= driver.findElement(By.id("loginButton"));
+//        login.click();
         MyFunc.Bekle(2);
-        WebElement record= driver.findElement(By.className("icon-search"));
+        WebElement record = driver.findElement(By.className("icon-search"));
         record.click();
 
-        WebElement patient= driver.findElement(By.id("patient-search"));
-        patient.sendKeys("100T5T");
+        WebElement patient = driver.findElement(By.id("patient-search"));
+        patient.sendKeys(b);
         MyFunc.Bekle(2);
-        WebElement person= driver.findElement(By.xpath("//td[text()='100T5T']"));
+        WebElement person = driver.findElement(By.cssSelector("[class='recent-lozenge']"));
         person.click();
-        WebElement delete= driver.findElement(By.id("org.openmrs.module.coreapps.deletePatient"));
+        WebElement delete = driver.findElement(By.id("org.openmrs.module.coreapps.deletePatient"));
         delete.click();
-        WebElement text= driver.findElement(By.id("delete-reason"));
+        WebElement text = driver.findElement(By.id("delete-reason"));
         text.sendKeys("YES");
-        WebElement confirm= driver.findElement(By.xpath("(//*[@class='confirm right'])[6]"));
+        WebElement confirm = driver.findElement(By.xpath("(//*[@class='confirm right'])[6]"));
         confirm.click();
 
     }
+
     @Test(groups = "Smoke Test", priority = 16)
-    public void HastaSilme_Negative(){
+    public void HastaSilme_Negative() {
         driver.get("https://openmrs.org/");
         MyFunc.Bekle(2);
-        WebElement demo= driver.findElement(By.className("zak-button"));
+        WebElement demo = driver.findElement(By.className("zak-button"));
         demo.click();
-        WebElement buton=driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
+        WebElement buton = driver.findElement(By.xpath("//span[text()='Explore OpenMRS 2']"));
         wait.until(ExpectedConditions.visibilityOf(buton));
         buton.click();
         MyFunc.Bekle(3);
-        WebElement demo2=driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
+        WebElement demo2 = driver.findElement(By.xpath("//span[text()='Enter the OpenMRS 2 Demo']"));
         demo2.click();
-        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
-        WebElement user=driver.findElement(By.id("username"));
-        user.sendKeys("Admin");
-        WebElement pass=driver.findElement(By.id("password"));
-        pass.sendKeys("Admin123");
-
-        WebElement isolation= driver.findElement(By.cssSelector("[id='sessionLocation'] :nth-child(2)"));
-        isolation.click();
-        WebElement login= driver.findElement(By.id("loginButton"));
-        login.click();
+//        wait.until(ExpectedConditions.urlToBe("https://demo.openmrs.org/openmrs/login.htm"));
+//        WebElement user=driver.findElement(By.id("username"));
+//        user.sendKeys("Admin");
+//        WebElement pass=driver.findElement(By.id("password"));
+//        pass.sendKeys("Admin123");
+//
+//        WebElement isolation= driver.findElement(By.cssSelector("[id='sessionLocation'] :nth-child(2)"));
+//        isolation.click();
+//        WebElement login= driver.findElement(By.id("loginButton"));
+//        login.click();
         MyFunc.Bekle(2);
-        WebElement record= driver.findElement(By.className("icon-search"));
+        WebElement record = driver.findElement(By.className("icon-search"));
         record.click();
 
-        WebElement patient= driver.findElement(By.id("patient-search"));
-        patient.sendKeys("100T55");
+        WebElement patient = driver.findElement(By.id("patient-search"));
+        patient.sendKeys(a);
         MyFunc.Bekle(2);
-        WebElement msj= driver.findElement(By.cssSelector("[class='dataTables_empty']"));
+        WebElement msj = driver.findElement(By.cssSelector("[class='dataTables_empty']"));
         Assert.assertTrue(msj.getText().toLowerCase().contains("no matching"));
         System.out.println("msj.getText() = " + msj.getText());
     }
 }
-
-
