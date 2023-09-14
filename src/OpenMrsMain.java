@@ -19,22 +19,23 @@ public class OpenMrsMain extends BaseDriver {
     String name = "Admin";
     String pAssword = "Admin123";
     String a=null;
+    String b=null;
 
-    @Test(groups = "Smoke Test")
+    @Test(groups = "Smoke Test", priority = 2)
     public void LogOut() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         driver.get("https://openmrs.org/demo/");
         wait.until(ExpectedConditions.elementToBeClickable(e.demo));
         e.demo.click();
-        e.username.sendKeys(name);
-        e.Password.sendKeys(pAssword);
+     //   e.username.sendKeys(name);
+      //  e.Password.sendKeys(pAssword);
         e.desk.click();
         e.in.click();
         e.out.click();
 
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test", priority = 10)
     public void patientList() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         driver.get("https://openmrs.org/demo/");
@@ -50,7 +51,7 @@ public class OpenMrsMain extends BaseDriver {
     }
 
     //Nurhayat SOYDAN
-    @Test(groups = "Smoke Test")
+    @Test(groups = "Smoke Test", priority = 1)
     public void validLogin() {
 
         driver.get("https://openmrs.org/demo/");
@@ -78,7 +79,7 @@ public class OpenMrsMain extends BaseDriver {
     }
 
 
-    @Test(groups = "Smoke Test")
+    @Test(groups = "Smoke Test", priority = 17)
     public void myAccount() {
         driver.get("https://openmrs.org/");
 
@@ -127,7 +128,7 @@ public class OpenMrsMain extends BaseDriver {
     String patient1ID = "100J0C";
     String patient2ID = "100HXG";
 
-    @Test(groups = "Smoke Test")
+    @Test(groups = "Smoke Test", priority = 3)
     public void locationNull() { // Location not selected
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
@@ -147,7 +148,7 @@ public class OpenMrsMain extends BaseDriver {
         Assert.assertTrue(locationError.getText().contains("location"));
     }
 
-    @Test(groups = "Smoke Test")
+    @Test(groups = "Smoke Test", priority = 6)
     public void loginPositive() { // Valid ID and Password
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
@@ -170,7 +171,7 @@ public class OpenMrsMain extends BaseDriver {
         logoutBtn.click();
     }
 
-    @Test(dataProvider = "userInvalid", groups = "Smoke Test")
+    @Test(dataProvider = "userInvalid", groups = "Smoke Test", priority = 4)
     public void loginNegative(String Id, String password) { // Invalid ID and Password, Invalid ID, Invalid Password
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
@@ -197,7 +198,7 @@ public class OpenMrsMain extends BaseDriver {
         return invalidData;
     }
 
-    @Test(dataProvider = "userNull", groups = "Smoke Test")
+    @Test(dataProvider = "userNull", groups = "Smoke Test", priority = 5)
     public void loginNull(String Id, String password) { // Null ID and Password, Null ID, Null Password
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
@@ -224,7 +225,7 @@ public class OpenMrsMain extends BaseDriver {
         return nullData;
     }
 
-    @Test(groups = "Regression Test", dependsOnMethods = {"Patient_Registration", "Patient_Registration2"})
+    @Test(groups = "Regression Test", priority =9 )
     public void patientMerge() {
 
         OpenMrsMain_POM e = new OpenMrsMain_POM();
@@ -243,7 +244,7 @@ public class OpenMrsMain extends BaseDriver {
      */   e.dataMBtn.click();
         e.mergePBtn.click();
         e.patient1.sendKeys(a);
-        e.patient2.sendKeys(e.ConfrimID2.getText() + Keys.ENTER);
+        e.patient2.sendKeys(b + Keys.ENTER);
         wait.until(ExpectedConditions.elementToBeClickable(e.confirmBtn));
         e.confirmBtn.click();
         wait.until(ExpectedConditions.visibilityOf(e.warningText));
@@ -255,7 +256,7 @@ public class OpenMrsMain extends BaseDriver {
     }
     //Serkan ŞENGÜL
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test",priority = 7)
     public void Patient_Registration() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
 
@@ -319,7 +320,7 @@ public class OpenMrsMain extends BaseDriver {
 
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test",priority = 8)
     public void Patient_Registration2() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
 
@@ -375,14 +376,14 @@ public class OpenMrsMain extends BaseDriver {
         e.Confrim.click();
         wait.until(ExpectedConditions.visibilityOf(e.ConfrimName));
         System.out.println("hamza.ConfrimName = " + e.ConfrimName.getText());
-        System.out.println("hamza.ConfrimID = " + e.ConfrimID.getText());
-
+        System.out.println("hamza.ConfrimID = " + e.ConfrimID2.getText());
+        b=e.ConfrimID2.getText();
         Assert.assertTrue(e.ConfrimName.isEnabled());
-        Assert.assertTrue(e.ConfrimID.isEnabled());
+        Assert.assertTrue(e.ConfrimID2.isEnabled());
 
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test", priority = 14)
     public void Patient_Appointment_Wrong_Time_Zone() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
 
@@ -408,7 +409,7 @@ public class OpenMrsMain extends BaseDriver {
 
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test", priority = 13)
     public void Patient_Appointment_Correct_Time_Zone() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         //Randevu almadan önce mutlaka saati GMT+0 yapmanız gerekmektedir.
@@ -433,7 +434,7 @@ public class OpenMrsMain extends BaseDriver {
         Assert.assertFalse(e.Massege.isDisplayed());
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test", priority = 11)
     public void Searching_the_Patient_List() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         driver.get("https://openmrs.org/");
@@ -449,7 +450,7 @@ public class OpenMrsMain extends BaseDriver {
 //        e.PharmacyButton.click();
 //        e.Loginbuton.click();
         e.FindPatRec.click();
-        e.SearchBox.sendKeys("100LMX");
+        e.SearchBox.sendKeys(a);
         wait.until(ExpectedConditions.visibilityOf(e.ClickPatient));
         e.ClickPatient.click();
         wait.until(ExpectedConditions.visibilityOfAllElements(e.GeneralActions));
@@ -460,7 +461,7 @@ public class OpenMrsMain extends BaseDriver {
 
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "Regression Test", priority = 12)
     public void Searching_With_WrongName() {
         OpenMrsMain_POM e = new OpenMrsMain_POM();
         driver.get("https://openmrs.org/");
@@ -483,8 +484,8 @@ public class OpenMrsMain extends BaseDriver {
     }
 
     //Salih MUTLUER
-    @Test
-    public void HastaSilme1(){
+    @Test(groups = "Smoke Test", priority = 15)
+    public void HastaSilme(){
         driver.get("https://openmrs.org/");
         MyFunc.Bekle(2);
         WebElement demo= driver.findElement(By.className("zak-button"));
@@ -522,8 +523,8 @@ public class OpenMrsMain extends BaseDriver {
         confirm.click();
 
     }
-    @Test
-    public void Test2(){
+    @Test(groups = "Smoke Test", priority = 16)
+    public void HastaSilme_Negative(){
         driver.get("https://openmrs.org/");
         MyFunc.Bekle(2);
         WebElement demo= driver.findElement(By.className("zak-button"));
